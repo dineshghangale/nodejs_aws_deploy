@@ -20,8 +20,8 @@ jobs:
         DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-		    REMOTE_HOST: ip-172-31-24-48
-		    REMOTE_USER: ${{ secrets.REMOTE_USER_DEVELOPMENT }}
+        SSH_PRIVATE_KEY: "${{ secrets.SSH_PRIVATE_KEY }}"
+	REMOTE_HOST: 172.31.24.48
+	REMOTE_USER: ${{ secrets.REMOTE_USER_DEVELOPMENT }}
         SOURCE: "build/"
         DEPLOY_TARGET: ${{ secrets.DEPLOY_TARGET }}
