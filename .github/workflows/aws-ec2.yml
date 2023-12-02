@@ -1,0 +1,27 @@
+on:
+  push:
+    branches: [ "main" ]
+ 
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 20.x to Build
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - run: npm install
+    - run: CI=false npm run build
+    - name: ssh deploy on aws ec2
+      uses: easingthemes/ssh-deploy@v2.1.4
+      env:
+      
+        DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+	REMOTE_HOST: 172.31.24.48
+	REMOTE_USER: ${{ secrets.REMOTE_USER_DEVELOPMENT }}
+        SOURCE: "build/"
+        DEPLOY_TARGET: ${{ secrets.DEPLOY_TARGET }}
