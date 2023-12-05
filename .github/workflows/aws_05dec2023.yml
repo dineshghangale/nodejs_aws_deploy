@@ -59,7 +59,6 @@ workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     if: github.ref == 'refs/heads/master'
