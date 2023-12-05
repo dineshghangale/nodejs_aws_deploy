@@ -36,3 +36,4 @@ jobs:
           remote_host: ec2-34-234-179-123.compute-1.amazonaws.com
           remote_user: ubuntu
           remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+          
